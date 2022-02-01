@@ -1,4 +1,4 @@
-import distribute_form_handle from "./lib/distributeFormHandle";
+import distribute_form_handle from "./libs/distributeFormHandle";
 
 distribute_form_handle(
 	// all points to distribute
