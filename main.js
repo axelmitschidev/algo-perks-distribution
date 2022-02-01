@@ -13,23 +13,15 @@ life_element.setAttribute('max', total_perks);
 
 let remaining_points = 0;
 
-attack_element.addEventListener('change', e => {
-	remaining_points = total_perks - attack_element.value - defence_element.value - life_element.value;
-	defence_element.setAttribute('max', total_perks - attack_element.value - life_element.value);
-	life_element.setAttribute('max', total_perks - attack_element.value - defence_element.value);
-	perks_element.innerText = remaining_points;
-});
+function handle_element(main_element, first_anti_element, second_anti_element) {
+	main_element.addEventListener('change', e => {
+		remaining_points = total_perks - main_element.value - first_anti_element.value - second_anti_element.value;
+		first_anti_element.setAttribute('max', total_perks - main_element.value - second_anti_element.value);
+		second_anti_element.setAttribute('max', total_perks - main_element.value - first_anti_element.value);
+		perks_element.innerText = remaining_points;
+	});
+}
 
-defence_element.addEventListener('change', e => {
-	remaining_points = total_perks - attack_element.value - defence_element.value - life_element.value;
-	attack_element.setAttribute('max',  total_perks - defence_element.value - life_element.value)
-	life_element.setAttribute('max',  total_perks - attack_element.value - defence_element.value)
-	perks_element.innerText = remaining_points;
-});
-
-life_element.addEventListener('change', e => {
-	remaining_points = total_perks - attack_element.value - defence_element.value - life_element.value;
-	attack_element.setAttribute('max', total_perks - life_element.value - defence_element.value)
-	defence_element.setAttribute('max', total_perks - attack_element.value - life_element.value)
-	perks_element.innerText = remaining_points;
-});
+handle_element(attack_element, defence_element, life_element);
+handle_element(defence_element, life_element, attack_element);
+handle_element(life_element, attack_element, defence_element);
