@@ -1,8 +1,6 @@
-import distribute_form_handle from "./libs/distributeFormHandle";
-
 distribute_form_handle(
 	// all points to distribute
-	10,
+	100,
 	// display element	
 	document.getElementById('points-display'),
 	// all inputs ⬇️
